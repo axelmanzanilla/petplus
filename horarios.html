@@ -70,8 +70,20 @@
             flex-direction: column;
             flex-grow: 1;
             display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .div-rep{
+            display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
+        }
+
+        p, h4, h3{
+            margin: 0;
+            padding: 0;
         }
 
         .horarios{
@@ -83,9 +95,15 @@
         .horarios li{
             display: flex;
             flex-direction: row;
+            margin: 12px;
+            padding: 0 8px 0 8px;
+            box-sizing: border-box;
             background-color: rgb(113, 113, 242);
             width: calc(100vh/2 - 4vh);
+            height: 60px;
             border-radius: 8px;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .delete{
@@ -98,26 +116,49 @@
         }
 
         .nuevo-horario{
-            width: 250px;
-            height: 250px;
+            width: 240px;
+            height: 230px;
             position: absolute;
-            background-color: rgb(52, 29, 181);
-            background-color: yellow;
+            background-color: rgb(82, 82, 173);;
             z-index: 10;
-            top: 40vh;
-            left: 40vw;
-            display: flex;
-            justify-content: space-between;
+            top: 30vh;
+            left: calc(50vw - 120px);
+            display: none;
+            justify-content: space-around;
+            text-align: center;
         }
 
         #edit:checked ~ div{
-            display: none;
+            display: flex;
         }
 
         .form{
             width: 80%;
             display: flex;
             flex-direction: column;
+        }
+
+        .seccion{
+            display: flex;
+            flex-direction: column;
+            margin: 0 0 10px 4px;
+        }
+        
+        .seccion2{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .aceptar{
+            align-self: center;
+            margin-top: 8px;
+            width: 80px;
+        }
+
+        .add-circle{
+            font-size: 32px;
         }
     </style>
 </head>
@@ -137,11 +178,19 @@
         <div class="nuevo-horario">
             <div class="form">
                 <h3>Editar horario 1</h3>
-                <label for="time">Hora:</label>
-                <input type="time" name="time" id="time">
-                <label for="cantidad">Cantidad de comida en gramos</label>
-                <input type="number" name="cantidad" id="cantidad">
-                <button>Aceptar</button>
+                <div class="seccion">
+                    <label for="time">Hora:</label>
+                    <input type="time" name="time" id="time">
+                </div>
+                <div class="seccion">
+                    <label for="cantidad">Cantidad de comida en gramos</label>
+                    <input type="number" name="cantidad" id="cantidad">
+                </div>
+                <div class="seccion2">
+                    <label for="active">Activo:</label>
+                    <input type="checkbox" name="active" id="active">
+                </div>
+                <button class="aceptar">Aceptar</button>
             </div>
             <label for="edit"><span class="material-symbols-outlined">close</span></label>
         </div>
@@ -149,15 +198,36 @@
             <ul class="horarios">
                 <li>
                     <p>Horario 1</p>
-                    <p>21:50</p>
-                    <label for="rep">Repetir</label>
-                    <input type="checkbox" name="rep" id="rep">
+                    <div class="div-rep">
+                        <h4>Hora</h4>
+                        <p>21:50</p>
+                    </div>
+                    <div class="div-rep">
+                        <label for="rep">Repetir</label>
+                        <input type="checkbox" name="rep" id="rep">
+                    </div>
+                    <label for="edit"><span class="material-symbols-outlined">edit</span></label>
+                    
+                    <span class="material-symbols-outlined delete">delete</span>
+                </li>
+
+                <li>
+                    <p>Horario 2</p>
+                    <div class="div-rep">
+                        <h4>Hora</h4>
+                        <p>21:50</p>
+                    </div>
+                    <div class="div-rep">
+                        <label for="rep">Repetir</label>
+                        <input type="checkbox" name="rep" id="rep">
+                    </div>
                     <label for="edit"><span class="material-symbols-outlined">edit</span></label>
                     
                     <span class="material-symbols-outlined delete">delete</span>
                 </li>
             </ul>
-            <span class="material-symbols-outlined">add_circle</span>
+            <h3>Agregar nuevo</h4>
+            <span class="material-symbols-outlined add-circle">add_circle</span>
         </main>
     </div>
 </body>
